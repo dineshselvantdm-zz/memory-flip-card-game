@@ -1,0 +1,53 @@
+.memoryGame{
+	text-align: center;
+}
+
+.memoryGame__topContainer__timer, .memoryGame__topContainer__btn, .memoryGame__grid, .memoryGame__userStats{
+	display: inline-block;
+    margin: 10px;
+}
+.memoryGame__grid__list{
+	width: 500px;	
+}
+.memoryGame__grid__list__box{
+	width: 100px;
+	height: 100px;
+	background: grey;
+	color: black;
+	display: inline-table;	
+	margin: 5px;
+	position: relative;
+	-webkit-transition:0.5s;
+	-moz-transition:0.5s;
+	-o-transition:0.5s;
+	transition:0.5s;
+	-webkit-transform-style:preserve-3d;
+	-moz-transform-style:preserve-3d;
+	-ms-transform-style:preserve-3d;
+	-o-transform-style:preserve-3d;
+	transform-style:preserve-3d;
+}
+.memoryGame__grid__list__box__msg, .memoryGame__grid__list__box__hiddenMsg{
+	display: table-cell;
+	vertical-align: middle;
+	-webkit-backface-visibility:hidden;
+	-moz-backface-visibility:hidden;
+	-ms-backface-visibility:hidden;
+	-o-backface-visibility:hidden;
+	backface-visibility:hidden;
+}
+.memoryGame__grid__list__box__hiddenMsg{
+	position: absolute;
+    top: 42px;
+    right: 45px;
+}
+.memoryGame__grid__list__box__hiddenMsg, .flipped{
+	-webkit-transform:rotateY(180deg);
+	-moz-transform:rotateY(180deg);
+	-ms-transform:rotateY(180deg);
+	-o-transform:rotateY(180deg);
+	transform:rotateY(180deg);
+}
+table, th, td {
+    border: 1px solid black;
+}
