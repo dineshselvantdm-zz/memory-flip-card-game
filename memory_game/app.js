@@ -153,9 +153,9 @@ var Timer = (function(){
 	var initTimer = function(){
 		timerDuration = TIMER_DURATION;		
 		timer = setInterval(function(){
-			timerDuration--;
-			document.getElementsByClassName('memoryGame__topContainer__timer')[0].innerHTML = timerDuration + ' seconds remaining ...';
-			if(timerDuration < 0){
+			Timer.timerDuration--;
+			document.getElementsByClassName('memoryGame__topContainer__timer')[0].innerHTML = Timer.timerDuration + ' seconds remaining ...';
+			if(Timer.timerDuration < 0){
 				clearInterval(timer);
 				document.getElementsByClassName('memoryGame__topContainer__timer')[0].innerHTML = 'TIME UP!';
 				MemoryGame.onFailure();
