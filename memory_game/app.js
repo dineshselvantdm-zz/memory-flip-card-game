@@ -40,13 +40,16 @@ var MemoryGame = (function(){
 		var blocks = document.querySelectorAll(".memoryGame__grid__list__box");
 			for(var i=0;i<blocks.length;i++){
 				blocks[i].addEventListener("click", function(e){
-				callBackLogic(e);
+					if(e.target.parentNode.classList.contains('flipped') != true && e.target.parentNode.classList.contains("memoryGame__grid__list__box") == true){
+						callBackLogic(e);
+					}
+					
 			});
 		}
 	}
 
 	var setUserStats = function(gameResult){
-		var userStats = {playerName: playerName||"Anonymous User",timeTaken: (TIMER_DURATION -Timer.timerDuration),gameResult: gameResult||"---"};
+		var userStats = {playerName: playerName||"Anonymous User",timeTaken: (TIMER_DURATION - Timer.timerDuration),gameResult: gameResult||"---"};
 		if(gameResult == 'Lost'){
 			userStats.timeTaken = 'TIME UP'
 		}
@@ -148,14 +151,13 @@ var Timer = (function(){
 	var timer;
 	var stopTimer = function(){
 		clearInterval(timer);
-		return timerDuration;
 	}
 	var initTimer = function(){
 		timerDuration = TIMER_DURATION;		
 		timer = setInterval(function(){
-			Timer.timerDuration--;
-			document.getElementsByClassName('memoryGame__topContainer__timer')[0].innerHTML = Timer.timerDuration + ' seconds remaining ...';
-			if(Timer.timerDuration < 0){
+			timerDuration--;
+			document.getElementsByClassName('memoryGame__topContainer__timer')[0].innerHTML = timerDuration + ' seconds remaining ...';
+			if(timerDuration < 0){
 				clearInterval(timer);
 				document.getElementsByClassName('memoryGame__topContainer__timer')[0].innerHTML = 'TIME UP!';
 				MemoryGame.onFailure();
@@ -166,7 +168,6 @@ var Timer = (function(){
 	return{
 		initTimer : initTimer,	
 		stopTimer : stopTimer,
-		timerDuration: timerDuration
 	}
 
 })();
